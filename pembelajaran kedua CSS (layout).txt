@@ -1,0 +1,286 @@
+Display: 
+berguna mengatur display
+-block
+-inline
+-inline-block
+
+*seluruh elemen di html memiliki default display tersendri
+
+yang akan kita bahas (berhubungan dengan konsep parents and child)
+elemen html 
+<div></div> : mengelompokan suatu elemen ke dalam bentuk box (display box)
+<span></span> :mengelompokan suatu elemen ke dalam bentuk inline (display inline)
+
+tips: 
+melihat display pada elemen html bisa dilakukan di browser caranya klik kanan > inspection > computed cari display
+--------------------------------------------------------------------------------------
+
+inline : (<b>,<a>,<img>,<i>,<label>,...)
+-tak dapat mengatur tinggi dan lebar dari elemen inline
+-margin dan padding hanya berpengaruh secara horizontal 
+-tinggi dan lebar mengikuti kontennya
+-elemen html yang secara default tidak menambahkan garis baru ketika dibuat 
+
+*img pengecualian yang bisa diatur tinggi dan lebar elemen nya
+
+inline-block : (display:inline-block;)
+-tidak ada elemen yang default display nya inline-block
+-dibuat secara manual oleh user
+-prilaku dasar mirip seperti display inline
+-namun bedanya bisa diatur tinggi dan lebar
+
+block : (<h1>-<h6>,<p>,<ol><<ul><li>,<form>,<hr>,<div>)
+-elemen html yang secara default menambahkan garis baru ketika dibuat 
+-harus mengatur lebar jika tidak akan memenuhi lebar dari parent nya
+-dapat menagtur tinggi dan lebar elemen
+-dalam elmen block bisa menyimpan elemen yang memiliki display inline,inline-block, atau block lagi
+
+---------------------------------------------------------------------------------------
+
+dimensi : adalah ukuran tinggi dan lebar dari suatu elemen
+
+width : mengatur lebar 
+height : mengatur tinggi 
+
+pemahaman ini penting teruma saat mengatur display block terutama <div> (jangan lupa pahami konsep sifat display block point 2)
+
+-----------------------------------------------------------------------------------------
+
+overflow : properti yang mengatur sifat display block "overflow:value;"
+
+value nya:
+visible : default dari elemen (ga bakal ngaruh apa apa)
+auto : ini kek otomatis buat fitur scroll jika konten melebihi dimensi elemen
+hidden : membuat seluruh konten nya tersembunyi apabila melebihi dimensi elemennya
+scroll : membuat fitur scroll pada elemen display block
+
+-------------------------------------------------------------------------------------------
+
+Box Model
+
+-setiap elemen html itu dibungkus kotak (atau dalam artian kotak nya mengikuti isi konten)
+-bisa mengatur ukuran dimensi dari kotak tersebut (kecuali display inline)
+
+propertinya:
+margin : memberikan area transparan di luar box
+padding : meberikan area transparan didalam box dimulai dari sisi box
+border : memberikan garis pada tepi box
+
+
+
+======= Overlaping Margin
+adalah konsep spesial pada margin ketika ingin menggabungkan margin kanan dan kiri atau margin atas dan bawah atau memberikan nilai negative pada margin
+
+
+konsep ketika menggabungkan 2 margin atas atau bawah :
+dimana margin khusus yang vertikal tidak akan saling menambahkan, namun yang paling besar adalah margin yang dipakai
+
+contoh :
+kotak 1 punya margin-bottom:150px; dibawah nya ada kotak 2 yang punya margin-top:50px; 
+secara teori harus nya nambah menjadi 200px
+tapi konsep overlaping menjadi hal tersebut tak terjadi, dimana margin yang terbesar yang akan dipakai yaitu margin dari kotak 1 dan kotak 2 tidak mengalami perubahan
+
+konsep ketika menggabungkan 2 margin kiri atau kanan:
+dimana margin khusus yang horizontal margin akan saling menambahkan 
+
+contoh :
+kita punya 2 kotak yang sudah diubah display nya menjadi inline-block, dimana kotak 1 diberikan margin-right:30px dan kotak 2 diberikan margin-left:20x sehingga kotak 2 akan bergeser, sehingga total marginya ada 50px
+
+konsep ketika memberikan negative margin :
+ketika memberikan margin negative konten akan bergerak lawan arah
+konsep ini berlaku secara vertikal (atas atau bawah) dan horizontal (kanan atau kiri)
+
+contoh
+1. jika ada 2 kotak secara vertikal, kotak 1 memiliki margin-bottom:50px dan kotak 2 memiliki margin-top:-20px, dimana konsep secara vertikal yang besar seharus nya yang dipakai cuman jika memakai negativ maka kotak 2 akan bergerak keatas (berlawanan arah), sehingga totalnya margin sisa menjadi 30px
+
+2. jika ada 2 kotak secara horizontal yang display nya inline-block, ketika kotak 1 diberi margin-right: 70px dan kotak 2 memiliki margin-left:-30px, maka kotak 2 akan bergerak ke kiri (berlawanan arah), sehingga total margin menjadi 40px
+
+============ margin auto
+khusus untuk margin left and right, ketika ingin membuat sebuah konten menjadi center atau tengah bisa memberikan margin-left dan margin-right: nilai nya auto, wajib nilai nya left and right auto
+
+margin-left: auto;
+margin-right: auto;
+
+============= short hand margin
+membuat penulisan margin menjadi lebih singkat
+
+margin: 50px;
+menambahkan margin secara keseluruhan sisi atas,kanan,bawah,kiri
+
+margin: 50px 100px;
+menambahkan margin untuk atas&bawah : 50px dan untuk kanan&kiri: 100px
+
+margin: 50px 100px 20px;
+menambahkan margin-top: 50px, margin kanan&kiri: 100px, margin-bottom: 20px
+
+margin: 50px 20px 20px 40px;
+menambahkan margin-top: 50px, margin-right: 20px, margin_bottom: 20px, margin-left: 40px;
+searah jarum jam untuk pengisiannya
+
+
+=================  Padding
+
+*padding tak memiliki nilai auto dan negative
+
+*padding ketika ditambahkan akan memberikan penambahan size pada dimensi 
+
+================  Border
+
+penulisan border
+
+border: (tebal border) (jenis border) (warna border); (border: width style color;)
+
+contoh: border: 5px solid black;
+
+*memiliki sifat seperti padding yaitu akan memberikan penambahan size kepada dimensi
+
+================  Box-sizzing
+
+berfunggi agar padding dan border tidak memberikan penambahan size pada dimensi, letakan elemen ini di parent tertinggi (Seperti body)
+value nya: border-box
+
+box-sizzing: border-box;
+
+================= CSS reset
+
+berguna untuk supaya kita bisa mengatur ulang nilai nilai default pada halaman html khusus nya margin dan padding, supaya kita punya kendali penuh terhadap elemen kita
+
+*fyi browser memiliki default padding dan margin tersendri dengan css reset kita bisa menghilangkan itu 
+
+peletakannya sebelum menuliskan syntax css utama, tanda bintang kek gini *{...} itu berati secara keseluruhan elemen dipanggil
+
+tak perlu repot menulis css reset, tinggal kunjungi browser ketik "css reset" biasanya dari mayer web nanti tinggal salin dan letakan sebelum menuliskan syntax css utama
+
+--------------------------------------------------------------------------------
+
+float
+
+float:value; (value: none,left,right)
+
+properti yang berguna untuk mengatur posisi elemen.
+dimana posisi elemen di bisa dipaksa berada di kanan atau kiri
+
+===== normal flow
+adalah konsep default pada elemen, contoh nya kek elemen yang memiliki display inline ketika menambahkan elemen yang display nya inline juga akan bertambah ke sebelah nya begitu juga yang elemen memiliki display block ketika menambahkan elemen yang display nya block juga akan bertambah ke bawah nya
+
+==== out of flow
+float akan menggunakan konsep ini, dimana mengubah elemen yang memiliki default normal flow menjadi out of flow
+elemen yang memiliki konsep ini akan mengambang/pindah satu layer ke atas dari normal flow 
+
+==== konsep menggunakan flow
+
+flow digunakan untuk membuat text warping, teks yang ada di sebelah gambar misal nya 
+
+bisa juga digunakan untuk membuat image galery 
+
+---------------------------------------------------------------------------------------
+
+clear
+
+berhubungan dengan float
+yang tadi nya out of low berada diatas satu layer sehingga tak dianggap ke dalam normal flow lagi (menyebabkan elemen normal flow akan mengabaikan elemen out of flow), dengan clear ini bisa mengatasi hal tersebut 
+
+cara nya kita harus membuat div kosong terlebih dahulu kita kasih class bebas namanya, lalu nanti kita posisikan sesuai kebutuhan untuk menghentikan flow nya.
+
+contoh penggunaan ketika tak menggunakan clear
+
+<div class="kotak">
+        <img src="matcha1.jfif" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, ullam! Praesentium nihil officiis nemo inventore libero, assumenda quaerat vitae sunt, corporis quod perferendis facere impedit maxime dolore illo. Dicta, debitis.</p>
+</div>
+
+di css
+
+.kotak{
+            width: 800px;
+            border: 2px solid black;
+        }
+
+        .kotak img{
+           float: left;
+
+        }
+
+
+jika menggunakan clear:
+
+<div class="kotak">
+        <img src="matcha1.jfif" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, ullam! Praesentium nihil officiis nemo inventore libero, assumenda quaerat vitae sunt, corporis quod perferendis facere impedit maxime dolore illo. Dicta, debitis.</p>
+        <div class="contohclear"></div> 
+    </div>
+
+DI CSS
+
+.kotak{
+            width: 800px;
+            border: 2px solid black;
+        }
+
+        .kotak img{
+           float: left;
+
+        }
+
+        .contohclear{
+            clear: left;
+        }
+
+*sesuaikan penempatan div kosong sesuai penggunaan float, karena clear ini berguna untuk mengakhiri float.
+contoh nya dalamef code diatas bagian "<div class="contohclear"></div>"
+
+----------------------------------------------------------------------------------------------------------------
+properti Posisition
+
+position:value;
+
+gunanya itu untuk membuat elemen naik satu dimensi, diclaimer dulu setiap elemen memiliki default posisition static, nah ketika suatu elemen diberi sebuah margin maka elemen disekitar akan terkena efek pergerseran juga, oleh karena itu posisition ini berguna supaya bisa membuat elemen bisa bergerak bebas semaunya tanpa harus mempengaruhi posisi elemen lain 
+
+terdapat 4 value posisition:
+static: default posisition setiap elemen
+
+===== relative : membuat posisi elemen maju 1 dimensi 
+
+*ketika elemen diubah menjadi relative, maka akan mendapatkan properti khusus yaitu top,left,right,bottom gunanya untuk mengatur posisi elemen tersebut
+
+*elemen yang diberi relative jiwa nya masih ada disitu sedangkan untuk raga nya bisa diatur posisi nya sana sini, dan elemen sekitar tak bisa menempati posisi yang kosong karena masih ada jiwa nya disitu
+
+*titik awal nya titik dari posisi jiwa elemen itu berada 
+
+
+==== absolute : membuat posisi elemen maju 1 dimensi 
+
+*ketika elemen diubah menjadi absolute, maka akan mendapatkan properti khusus yaitu top,left,right,bottom gunanya untuk mengatur posisi elemen tersebut
+
+*bedanya dengan relative adalah, jika relative memajukan 1 dimensi dan meninggalkan jiwa nya. Maka abosulute memajukan 1 dimensi sambil membawa jiwa dan raga akibat nya elemen tersebut keberadaanya hilang dari dimensi sebelumnya, sehingga elemen disekitar nya akan menempati tempat dari elemen yang diberikan nilai absolute karena menganggap tidak ada apa lagi disana nya.
+
+==== fixed 
+
+gunanya membuat sebuah elemen jadi lengket, jadi kalo browser ngescroll kebawah dia ikutan kebawah atau sebaliknya
+
+
+
+*lebih baik pake relative atau absolute 
+absolute : dipake lebih dipake untuk elemen yang mau digerakan kesana kemari tanpa harus mengubah posisi elemen sekitarnya (saran penggunaan untuk child)
+relative : dipake lebih untuk menjadi pembatas untuk elemen yang diberikan abosulute (saran penggunaan untuk parents)
+
+
+--------------------------------------------------------------
+
+properti z-indeks
+
+z-indeks:value; (value: px)
+
+*masih masuk dalam keluarga position 
+
+dimana gunanya hanya untuk mengatur posisi dimensi lapisan, dia kayak posisition relatif cuman ga memiliki konsep relatif (materi relative point kedua), jadi ketika diberi margin maka akan mempengaruhi posisi letak dari elemen lain
+
+
+
+
+
+
+
+
+
+

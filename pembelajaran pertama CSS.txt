@@ -1,0 +1,190 @@
+CSS (casecading style sheet) berguna untuk mempercantik halaman web
+
+anatomi/struktue CSS
+
+selector { 
+	properti:value; 
+	
+	}
+
+selector : elemen html
+properti : fitur untuk mengubah style elemen html
+value : nilai masing masing dari properti
+
+
+Contoh 
+
+h1 { 
+	color: blue; 
+}
+
+*komentar dalam css:
+/* ... */ (atau ctrl + /)
+
+
+------------------------------------------------------------------------------------------
+
+cara menempatkan CSS
+
+embed : file css ditaro di satu halaman dengan html <style></style> ditaro di dalam tag <head></head>
+inline : css ditaro dibaris tertentu dari html (hanya mengubah bagian yang ditaro di bagian itu) <p style="color:blue;"> kalimat </p>
+external : file css ditaro terpisah atau punya file sendri yang dikaitkan dengan link (<link rel="stylesheet" href="masukan file css">)
+
+--------------------------------------------------------------------------------------------
+
+selector ada berbagai macam:
+elemen html :seluruh tag yang ada di html 
+id : atribut dari tag html (kalau pemakaian di css pakai #namaID )
+class : atribut dari tag html (kalau pemakaian di css pakai .namaCLASS )
+complex selector : selector yang kompleks berhubungan dengan spesificity
+
+
+bedanya id dan class:
+id:
+-nama ga boleh sama di setiap elemen yang memakai id
+-elemen html hanya boleh make 1 id
+-untuk js
+-bisa digunakan untuk page ancor
+-saran tak menggunakan id untuk css karena bobot nya berat (specificity)\
+
+
+tips:
+gunakan tanda koma jika ingin memberikan style yang sama pada suatu selector
+h1,h2 {
+	color:blue;
+}
+
+jika ingin lebih spesifik gunakan spasi:
+
+ul li a {
+	text-decoration : none;
+}
+
+
+------------------------------------------------------------------------------------------------
+psuedoclass css
+kelas semu yang dimiliki oleh sebuah elemen html, yang dapat mendefinisikan keadaan tertentu dari elemen tersebut
+
+psuedoclass beberapa seperti ini:
+:link : style default link (a) 
+:hover : style akan berubah ketika kursor menghampiri elemen
+:active : style ketika sebuah link di klik (keadaan aktif)
+:visited : style ketika sebuah link sudah dikunjungi
+
+contoh penggunaan:
+
+.hallo:hover{
+            color: aqua;
+        }
+
+--------------------------------------------------------------------------------------------------
+css juga memiliki inheritance 
+
+sebuah elemen mewarisi beberapa nilai dari properti yang dimilki oleh parent 
+
+jadi kosnep turunan disini itu seperti ini:
+
+jika sebuah parent diberikan properti maka pasti anak nya akan mewarisi properti itu juga
+contoh:
+di dalam html terdapat elemen p,h1 dan h2
+jika di css kita melakukan ini:
+body {
+	color : green;
+}
+
+maka ketiga elemen p,h1 dan h2 akan memiliki sifat properti dari parent nya yaitu green 
+sehingga seluruh tulisannya akan berwarna hijau
+jadi kesimpulan hati hati jika memberikan sebuah properti, pakai logikannya
+
+hal tersebut bisa ditangani dengan specificity
+
+-----------------------------------------------------------------------------------------
+
+specificity
+
+setiap elemen html memiliki bobot yang berbeda, berat tersebut menentukan seberapa spesifik sebuah elemen dapat diubah style nya
+
+intinya konsep ini penting memanggil elemen html ke css biar lebih spesifik 
+
+bobot dalam css
+
+(inline) (id) (class) (elemen)
+
+ingat bobot id lebih besar dari pda class
+
+misal :
+
+  <ul id="urutan">
+        <li class="nomor1">nomor satu</li>
+        <li>nomor dua</li>
+        <li>nomor 3</li>
+    </ul>
+
+di css
+
+  ul#urutan li {
+            color: blueviolet;
+        }
+  .nomor1{
+            color: black;
+        }
+
+yang terjadi semua warna li akan berubah menjadi unggu karena bobot di css nya 0102 (terdapat 1 id dan 2 elemen) dibanding yang bawah 0010 (hanya 1 class
+
+jika di css ditulis seperti ini:
+
+ul#urutan li {
+            color: blueviolet;
+        }
+        ul#urutan li.nomor1{
+            color: black;
+        }
+
+maka li semuanya akan unggu kecuali yang bawah atau nomor 1, karena bobot nya 0112 (terdapat 1 id, 1 class, 2 elemen)
+
+
+
+---------------------------------------------------------------------------------------
+
+properti font (untuk mengubah style kalimat)
+font-family : mengatur jenis font yang di pakai
+font-size : mengatur ukuran font (px,%,em)
+font-weight : mengatur ketebalan font (lighter,normal,100-900,bold)
+font-variant : mengubah font menjadi small-caps (normal,small-caps)
+font-style : mengubag font menjadi italic (italic,oblique)
+line-height : mengatur spasi antar kalimat (memberikan jarak kalimat atas sama kalimat bawah) (px)
+
+tips:
+jika ingin membuat tulisan pas di tengah tengah kotak(misal menggunakan <div>), kita bisa menggunakan line-height dengan ukuran yang sama dengan height dari kotak nya
+
+-----------------------------------------------------------------------------------------------
+
+properti text styling (untuk mengubah style kata)
+color : mengubah warna pada kata
+text-align : mengatur format paragraf (left,center,right,justify)
+text-indent : memberikan efek tab (kek yang ada di paragraf gitu) (px,%)
+text-decoration : mengatur dekorasi pada text (kek ngasih efek underline, dll) (underline,overline,line-through)
+text-transform : mengubah kata menjadii kapital/kecil (lowercase,uppercase,capitalize)
+latter-spacing : mengatur spasi antar huruf (normal,px)
+word-spacing : mengatir spasi antar kata (normal,px)
+
+-----------------------------------------------------------------------------------------------
+
+mengubah background pada css
+
+propertinya :
+background-color : mengubah warna pada background parent 
+background-image : mengubah background menjadi gambar yang diinput (background-image: url(masukan link gambar); )
+bacground-posisition : mengatur posisi gambar pada bacground (top/bottom (center/left/right))
+background-repeat : mengatur jenis perulangan gambar pada background (repeat-x dan repeat y, dll)
+repeat-x : mengulang gambar background di jalur x 
+repeat-y : mengulang gambar background di jalur y
+background-size: mengatur ukuran bacground (cover:menutupi satu halaman)
+
+------------------------------------------------------------------------------------------------
+
+
+
+
+ 
+
